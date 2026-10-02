@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>☕ 우리 팀 커피타임</title>
+  <meta name="description" content="오늘 커피는 누가 쏘나? 팀 커피 주문 한 번에 모으기" />
+  <meta name="theme-color" content="#FFF9F2" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="doodles" aria-hidden="true">
+    <span>☕</span><span>🥐</span><span>🍩</span><span>🧋</span><span>☕</span><span>🍩</span>
+  </div>
+
+  <header class="header">
+    <h1 class="title">☕ 우리 팀 커피타임</h1>
+    <p class="today" id="today-label"></p>
+    <p class="tagline">오늘 커피는 누가 쏘나? 🤔</p>
+  </header>
+
+  <div class="closed-banner" id="closed-banner" hidden>오늘 주문 마감! ☕ <small>다음에 또 만나요</small></div>
+
+  <main class="container">
+    <section class="card" aria-labelledby="cafe-title">
+      <h2 class="section-title" id="cafe-title">🏠 오늘의 카페</h2>
+      <p class="hint">누구나 바꿀 수 있어요. 이미 담은 주문은 그대로 남아요!</p>
+      <div class="pills" id="cafe-pills" role="radiogroup" aria-label="오늘의 카페"></div>
+    </section>
+
+    <section class="card" aria-labelledby="menu-title">
+      <h2 class="section-title" id="menu-title">🍩 메뉴 고르기</h2>
+      <nav class="cat-tabs" id="cat-tabs" aria-label="카테고리 바로가기"></nav>
+      <div id="menu-list"><p class="empty">메뉴 불러오는 중… ☕</p></div>
+    </section>
+
+    <section class="card" aria-labelledby="board-title">
+      <h2 class="section-title" id="board-title">📋 주문 현황판</h2>
+      <div class="summary" id="summary"></div>
+      <div class="chips" id="chips"></div>
+      <div class="people" id="people"></div>
+    </section>
+  </main>
+
+  <footer class="footer">가격은 2026년 10월 기준이며 매장별로 다를 수 있어요 ☕</footer>
+
+  <div class="action-bar">
+    <button class="btn btn-caramel" id="copy-btn" type="button">주문서 복사하기 📋</button>
+    <button class="btn btn-brown" id="close-btn" type="button">마감하기 🔒</button>
+    <button class="btn btn-ghost" id="reset-btn" type="button" aria-label="초기화">초기화 🗑️</button>
+  </div>
+
+  <div class="sheet-backdrop" id="sheet-backdrop" hidden></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <button class="sheet-close" id="sheet-close" type="button" aria-label="닫기">✕</button>
+    <p class="sheet-cafe" id="sheet-cafe"></p>
+    <h3 class="sheet-title" id="sheet-title"></h3>
+    <p class="sheet-price" id="sheet-price"></p>
+    <form id="order-form" novalidate>
+      <fieldset class="field">
+        <legend>온도</legend>
+        <div class="temp-toggle" id="temp-toggle">
+          <button type="button" class="temp-btn hot" data-temp="HOT">🔥 HOT</button>
+          <button type="button" class="temp-btn ice" data-temp="ICE">🧊 ICE</button>
+        </div>
+      </fieldset>
+      <label class="field">
+        <span>요청사항 <small>(선택)</small></span>
+        <input id="note-input" type="text" maxlength="100" placeholder="예: 덜 달게, 샷 추가" autocomplete="off" />
+      </label>
+      <label class="field">
+        <span>이름</span>
+        <input id="name-input" type="text" maxlength="20" placeholder="주문하는 사람 이름" autocomplete="name" required />
+      </label>
+      <button class="btn btn-pink btn-block" id="submit-btn" type="submit">주문 담기 🧋</button>
+    </form>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

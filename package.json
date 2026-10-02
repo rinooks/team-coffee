@@ -1,0 +1,13 @@
+{
+  "name": "team-coffee",
+  "version": "1.0.0",
+  "private": true,
+  "description": "우리 팀 커피타임 — 팀 커피 주문 모으기",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0"
+  }
+}
